@@ -4,9 +4,11 @@ const Schema = mongoose.Schema;
 const listingSchema = new Schema({
   title: {
     type: String,
-    required: true,
+    required: [true, "Title is required"],
   },
-  description: String,
+  description: {
+    type: String,
+  },
   image: {
     filename: {
       type: String,
@@ -18,10 +20,17 @@ const listingSchema = new Schema({
         "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
     },
   },
-  price: Number,
-  location: String,
-  country: String,
+  price: {
+    type: Number,
+  },
+  location: {
+    type: String,
+  },
+  country: {
+    type: String,
+  },
 });
 
 const Listing = mongoose.model("Listing", listingSchema);
+
 module.exports = Listing;

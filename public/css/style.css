@@ -93,6 +93,7 @@ justify-content:space-evenly;
 .edit-btn{
  background-color:#fe424d !important;
    border:none !important;
+   color:white !important;
 }
 /* show page */
 .show-img{
