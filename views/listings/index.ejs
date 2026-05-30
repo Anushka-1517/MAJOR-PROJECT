@@ -8,14 +8,16 @@
 
 <a href="/listings/<%= listing._id %>" class="listing-link">
 
-<div class="card col">
+<div class="card col listing-card">
 
-<img 
-  src="<%= listing.image?.url || 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee' %>" 
+<img
+  src="<%= listing.image.url %>"
   class="card-img-top"
   alt="listing_img"
   style="height:20rem"
 >
+
+
 
 <div class="card-img-overlay"></div>
 
