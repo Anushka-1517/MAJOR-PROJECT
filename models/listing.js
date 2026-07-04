@@ -7,9 +7,11 @@ const listingSchema = new Schema({
     type: String,
     required: [true, "Title is required"],
   },
+
   description: {
     type: String,
   },
+
   image: {
     filename: {
       type: String,
@@ -21,28 +23,42 @@ const listingSchema = new Schema({
         "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
     },
   },
+
   price: {
     type: Number,
   },
+
   location: {
     type: String,
   },
+
   country: {
     type: String,
   },
-  reviews:[
-    {
-      type:Schema.Types.ObjectId,
-      ref:"Review",
-    }
 
-  ]
+  reviews: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Review",
+    },
+  ],
+
+  owner: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+  },
 });
-listingSchema.post("findOneAndDelete",async (listing) => {
+
+// Delete all reviews when a listing is deleted
+listingSchema.post("findOneAndDelete", async (listing) => {
   if (listing) {
-await Review.deleteMany({_id :{$in : listing.reviewa} });
+    await Review.deleteMany({
+      _id: { $in: listing.reviews },
+    });
   }
-} )
+});
+
 const Listing = mongoose.model("Listing", listingSchema);
+
 
 module.exports = Listing;
