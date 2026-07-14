@@ -36,6 +36,8 @@ main()
 async function main() {
   await mongoose.connect(MONGO_URL);
 }
+
+
 // ======================
 // View Engine Setup
 // ======================
@@ -48,6 +50,8 @@ app.engine("ejs", ejsMate);
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "public")));
+
+
 
 const sessionOptions = {
   secret:"mysupersecretcode",
