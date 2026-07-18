@@ -102,10 +102,7 @@ app.use((req, res, next) => {
 // ======================
 // Routes
 // ======================
-// Root Route
-app.get("/", (req, res) => {
-  res.send("Hi, I am root");
-});
+
 app.use("/listings",listingRouter);
 app.use("/listings/:id/reviews",reviewRouter);
 app.use("/", userRouter);
