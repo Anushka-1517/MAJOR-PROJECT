@@ -138,7 +138,10 @@ app.use((req,res,next)=>{
 
 });
 
-
+// Home Page
+app.get("/", (req, res) => {
+    res.render("home.ejs");
+});
 
 // ======================
 // Routes

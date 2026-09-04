@@ -6,7 +6,16 @@ const geocodingClient = mbxGeocoding({ accessToken: mapToken });
 
 
 module.exports.index = async (req, res) => {
-  const allListings = await Listing.find({});
+  const { location } = req.query;
+
+  let filter = {};
+
+  if (location) {
+    filter.location = { $regex: location, $options: "i" };
+  }
+
+  const allListings = await Listing.find(filter);
+
   res.render("listings/index.ejs", { allListings });
 };
 
